@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>core_backend.Data</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\core-backend.Common\core-backend.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CommonCore">
+      <HintPath>..\..\..\..\ASP .NET\CommonCore\CommonCore\bin\Debug\net9.0\CommonCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

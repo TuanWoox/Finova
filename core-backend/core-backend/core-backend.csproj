@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>core_backend</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Authentication & Security -->
+    <PackageReference Include="log4net" Version="3.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.14" />
+    
+    <!-- Entity Framework Core -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.14" />
+    
+    <!-- PostgreSQL -->
+    <PackageReference Include="Npgsql" Version="9.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    
+    <!-- JSON Handling -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.14" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    
+    <!-- API Documentation -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.6" />
+    
+    <!-- AutoMapper -->
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\core-backend.Data\core-backend.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CommonCore">
+      <HintPath>..\..\..\..\ASP .NET\CommonCore\CommonCore\bin\Debug\net9.0\CommonCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
