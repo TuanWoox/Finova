@@ -18,6 +18,7 @@ namespace core_backend.Business.Repository
             services.TryAddScoped<IIdentityService, IdentityService>();
             services.TryAddScoped<IAuthService, AuthService>();
             services.TryAddScoped<IAccountService, AccountService>();
+            services.TryAddScoped<ITransactionService, TransactionService>();
             return services;
         }
     }

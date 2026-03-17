@@ -12,6 +12,7 @@ namespace core_backend.Data
     ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public DbSet<Account> Accounts { get; set; } = null!;
+        public DbSet<Transaction> Transactions { get; set; } = null!;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -42,6 +43,19 @@ namespace core_backend.Data
                     .WithMany(r => r.UserRoles)
                     .HasForeignKey(ur => ur.RoleId)
                     .IsRequired();
+            });
+
+            builder.Entity<Transaction>(transaction =>
+            {
+                transaction.HasOne(t => t.Account)
+                    .WithMany()
+                    .HasForeignKey(t => t.AccountId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                transaction.HasOne(t => t.ToAccount)
+                    .WithMany()
+                    .HasForeignKey(t => t.ToAccountId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
 
