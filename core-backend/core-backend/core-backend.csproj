@@ -36,6 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\core-backend.Business\core-backend.Business.csproj" />
+    <ProjectReference Include="..\core-backend.Common\core-backend.Common.csproj" />
     <ProjectReference Include="..\core-backend.Data\core-backend.Data.csproj" />
   </ItemGroup>
 

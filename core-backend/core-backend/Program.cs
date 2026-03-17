@@ -2,6 +2,8 @@
 using core_backend.Data;
 using Microsoft.EntityFrameworkCore;
 using CommonCore.Utils.Extensions;
+using core_backend.Business.Repository;
+using core_backend.Common.Interfaces.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,13 +16,14 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureSwaggerService();
 builder.Services.ConfigureSignalR();
 builder.Services.ConfigureAutoMapper();
+builder.Services.RegisterServiceDI();
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    
+
     try
     {
         AppLogger.Instance.Info("Applying database migrations...");
@@ -31,6 +34,20 @@ using (var scope = app.Services.CreateScope())
     catch (Exception ex)
     {
         AppLogger.Instance.Info($"✗ Error applying migrations: {ex.Message}");
+        throw;
+    }
+
+    // Initialize roles
+    try
+    {
+        AppLogger.Instance.Info("Initializing application roles...");
+        var identityService = scope.ServiceProvider.GetRequiredService<IIdentityService>();
+        await identityService.InitRole();
+        AppLogger.Instance.Debug("✓ Application roles initialized successfully.");
+    }
+    catch (Exception ex)
+    {
+        AppLogger.Instance.Info($"✗ Error initializing roles: {ex.Message}");
         throw;
     }
 }
