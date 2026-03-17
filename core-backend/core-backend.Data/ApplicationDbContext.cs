@@ -1,4 +1,5 @@
 ﻿using CommonCore.Entities.BaseEntity;
+using core_backend.Common.Entities.DbEntities;
 using core_backend.Common.Entities.Identities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,6 +11,7 @@ namespace core_backend.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, IdentityUserClaim<string>,
     ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
+        public DbSet<Account> Accounts { get; set; } = null!;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
